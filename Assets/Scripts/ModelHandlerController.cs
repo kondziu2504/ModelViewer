@@ -10,32 +10,32 @@ public class ModelHandlerController : MonoBehaviour
     [Range(0.05f, 2f)]
     [SerializeField] float sensitivity = 1f;
 
-    Input input;
+    Controls controls;
 
     private void Awake()
     {
-        input = new Input();
+        controls = new Controls();
     }
 
     private void OnEnable()
     {
-        input.Enable();
+        controls.Enable();
     }
 
     private void OnDisable()
     {
-        input.Disable();
+        controls.Disable();
     }
 
     void Update()
     {
-        if (input.ModelViewer.RotationEnabled.IsPressed())
+        if (controls.ModelViewer.RotationEnabled.IsPressed())
             RotateModel();
     }
 
     private void RotateModel()
     {
-        Vector2 moveDelta = input.ModelViewer.RotationDelta.ReadValue<Vector2>();
+        Vector2 moveDelta = controls.ModelViewer.RotationDelta.ReadValue<Vector2>();
         
         float rotationX = moveDelta.x * sensitivity;
         float rotationY = moveDelta.y * sensitivity;
