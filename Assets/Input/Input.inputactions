@@ -1,0 +1,80 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "ModelViewer",
+            "id": "c06ead07-0eaa-466f-995a-47ddaf6c63ba",
+            "actions": [
+                {
+                    "name": "RotationDelta",
+                    "type": "Value",
+                    "id": "83462d2a-bc6a-4726-894f-6d0e83c0c522",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotationEnabled",
+                    "type": "Value",
+                    "id": "745538c1-f6ab-4aa9-b155-5b6f1bc3e3c4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ZoomDelta",
+                    "type": "Value",
+                    "id": "145b4d80-d0c2-430a-86df-ff2c40fcd19d",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "654a2b8a-165d-46bb-80a1-500bbf06d4fd",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "RotationDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39dae859-0340-446a-ad0e-dcc84a0ec6f8",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotationEnabled",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a81b8d6d-9aa6-4d13-a8cf-ffe3353e496f",
+                    "path": "<VirtualMouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "ZoomDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse",
+            "bindingGroup": "Mouse",
+            "devices": []
+        }
+    ]
+}
