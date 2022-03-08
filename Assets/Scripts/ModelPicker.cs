@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class ModelPicker : MonoBehaviour
 {
+    [SerializeField] Transform modelsParent;
     [SerializeField] GameObject[] models;
 
     int currentModel = 0;
@@ -24,13 +25,22 @@ public class ModelPicker : MonoBehaviour
 
     private void Awake()
     {
+        foreach (GameObject model in this.models)
+            model.transform.parent = modelsParent;
+
         ShowCurrentModel();
     }
 
     public void SetModels(GameObject[] models)
     {
+        foreach (GameObject model in this.models)
+            model.SetActive(false);
+
         this.models = models;
+        foreach (GameObject model in this.models)
+            model.transform.parent = modelsParent;
         currentModel = 0;
+        onModelChanged.Invoke();
         ShowCurrentModel();
     }
 
