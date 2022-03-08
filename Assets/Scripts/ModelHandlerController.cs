@@ -9,6 +9,7 @@ public class ModelHandlerController : MonoBehaviour
     [SerializeField] new Camera camera;
     [Range(0.05f, 2f)]
     [SerializeField] float sensitivity = 1f;
+    [SerializeField] Texture2D rotationCursor;
 
     Controls controls;
 
@@ -31,6 +32,16 @@ public class ModelHandlerController : MonoBehaviour
     {
         if (controls.ModelViewer.RotationEnabled.IsPressed())
             RotateModel();
+        UpdateCursor();
+    }
+
+    void UpdateCursor()
+    {
+
+        if (controls.ModelViewer.RotationEnabled.IsPressed())
+            Cursor.SetCursor(rotationCursor, new Vector2(rotationCursor.width / 2f, rotationCursor.height / 2f), CursorMode.Auto);
+        else
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     private void RotateModel()

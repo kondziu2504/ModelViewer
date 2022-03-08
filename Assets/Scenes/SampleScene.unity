@@ -656,6 +656,7 @@ MonoBehaviour:
   modelHandler: {fileID: 171691381}
   camera: {fileID: 2036866448}
   sensitivity: 0.4
+  rotationCursor: {fileID: 2800000, guid: dc4e9eb9fd19a2648be207dc9eefb956, type: 3}
 --- !u!114 &171691381
 MonoBehaviour:
   m_ObjectHideFlags: 0
