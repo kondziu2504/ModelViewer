@@ -5,16 +5,17 @@ using UnityEngine.EventSystems;
 
 public class BtnSounds : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
-    [SerializeField] AudioClip sound;
+    [SerializeField] AudioClip pressSound;
+    [SerializeField] AudioClip hoverSound;
     [SerializeField] float volume = 1f;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        LeanAudio.play(sound, volume);
+        LeanAudio.play(pressSound, volume);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        LeanAudio.play(sound, volume).pitch = 2f;
+        LeanAudio.play(hoverSound, volume).pitch = 2f;
     }
 }

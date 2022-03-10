@@ -9834,6 +9834,9 @@ MonoBehaviour:
   onModelChanged:
     m_PersistentCalls:
       m_Calls: []
+  onNewModels:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1634791761
 GameObject:
   m_ObjectHideFlags: 0
@@ -14796,6 +14799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5079747856169336885, guid: 4d06fb735bbe7fb4f80704b1e1e2e0f3, type: 3}
+      propertyPath: modelPicker
+      value: 
+      objectReference: {fileID: 1619394440}
     - target: {fileID: 8556218437384143010, guid: 4d06fb735bbe7fb4f80704b1e1e2e0f3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14819,6 +14826,10 @@ PrefabInstance:
     - target: {fileID: 8556218437384143010, guid: 4d06fb735bbe7fb4f80704b1e1e2e0f3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556218437384143011, guid: 4d06fb735bbe7fb4f80704b1e1e2e0f3, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8556218437384143011, guid: 4d06fb735bbe7fb4f80704b1e1e2e0f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

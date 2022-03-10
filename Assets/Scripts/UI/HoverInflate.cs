@@ -8,6 +8,7 @@ public class HoverInflate : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 {
     [SerializeField] float scaleMultiplier = 1.1f;
     [SerializeField] float inflatingTime = 1f;
+    Button button;
 
     float timeHovered = 0f;
 
@@ -19,10 +20,14 @@ public class HoverInflate : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private void Start()
     {
         originalScale = transform.localScale;
+        button = GetComponent<Button>();
     }
 
     private void Update()
     {
+        if (button != null && !button.interactable)
+            return;
+
         if (pointerInside)
             timeHovered += Time.deltaTime;
         else

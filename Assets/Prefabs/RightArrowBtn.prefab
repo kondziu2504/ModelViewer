@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5884106248835817655}
   - component: {fileID: 5884106248835817658}
   - component: {fileID: 9109685697429646352}
+  - component: {fileID: 5244833149462800994}
   m_Layer: 5
   m_Name: RightArrowBtn
   m_TagString: Untagged
@@ -156,3 +157,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleMultiplier: 1.1
   inflatingTime: 0.1
+--- !u!114 &5244833149462800994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884106248835817653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e9bca28560f3a4d9159bc924d0e33d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressSound: {fileID: 8300000, guid: 9c941c06cf1c14c4f822f4752bd0c720, type: 3}
+  hoverSound: {fileID: 8300000, guid: 9c941c06cf1c14c4f822f4752bd0c720, type: 3}
+  volume: 0.3

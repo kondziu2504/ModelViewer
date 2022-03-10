@@ -46,6 +46,9 @@ public class ModelHandlerController : MonoBehaviour
 
     private void RotateModel()
     {
+        if (modelHandler.HandledModel == null)
+            return;
+
         Vector2 moveDelta = controls.ModelViewer.RotationDelta.ReadValue<Vector2>();
         
         float rotationX = moveDelta.x * sensitivity;

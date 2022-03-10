@@ -7,10 +7,12 @@ public class ModelPicker : MonoBehaviour
 {
     [SerializeField] Transform modelsParent;
     [SerializeField] GameObject[] models;
+    public GameObject[] Models => models;
 
     int currentModel = 0;
 
     public UnityEvent onModelChanged = new UnityEvent();
+    public UnityEvent onNewModels = new UnityEvent();
 
     public GameObject CurrentModel
     {
@@ -41,6 +43,7 @@ public class ModelPicker : MonoBehaviour
             model.transform.parent = modelsParent;
         currentModel = 0;
         onModelChanged.Invoke();
+        onNewModels.Invoke();
         ShowCurrentModel();
     }
 
