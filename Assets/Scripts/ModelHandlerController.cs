@@ -21,21 +21,24 @@ public class ModelHandlerController : MonoBehaviour
     private void OnEnable()
     {
         controls.Enable();
+        controls.ModelViewer.RotationStart.started += UpdateCursor;
+        controls.ModelViewer.RotationStart.canceled += UpdateCursor;
     }
 
     private void OnDisable()
     {
         controls.Disable();
+        controls.ModelViewer.RotationStart.started -= UpdateCursor;
+        controls.ModelViewer.RotationStart.canceled -= UpdateCursor;
     }
 
     void Update()
     {
         if (controls.ModelViewer.RotationEnabled.IsPressed())
             RotateModel();
-        UpdateCursor();
     }
 
-    void UpdateCursor()
+    void UpdateCursor(InputAction.CallbackContext obj)
     {
 
         if (controls.ModelViewer.RotationEnabled.IsPressed())

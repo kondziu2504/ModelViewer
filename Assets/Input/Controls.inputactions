@@ -1,5 +1,5 @@
 {
-    "name": "Input",
+    "name": "Controls",
     "maps": [
         {
             "name": "ModelViewer",
@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "RotationStart",
+                    "type": "Button",
+                    "id": "e9ca638f-2f2f-4bef-b44b-ee7821ce78d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -64,6 +73,17 @@
                     "processors": "",
                     "groups": "Mouse",
                     "action": "ZoomDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eba51462-6534-4a6f-9400-e7b13e70d57c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotationStart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

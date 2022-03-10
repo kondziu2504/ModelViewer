@@ -53,6 +53,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RotationStart"",
+                    ""type"": ""Button"",
+                    ""id"": ""e9ca638f-2f2f-4bef-b44b-ee7821ce78d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""ZoomDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eba51462-6534-4a6f-9400-e7b13e70d57c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotationStart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -105,6 +125,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_ModelViewer_RotationDelta = m_ModelViewer.FindAction("RotationDelta", throwIfNotFound: true);
         m_ModelViewer_RotationEnabled = m_ModelViewer.FindAction("RotationEnabled", throwIfNotFound: true);
         m_ModelViewer_ZoomDelta = m_ModelViewer.FindAction("ZoomDelta", throwIfNotFound: true);
+        m_ModelViewer_RotationStart = m_ModelViewer.FindAction("RotationStart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -167,6 +188,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_ModelViewer_RotationDelta;
     private readonly InputAction m_ModelViewer_RotationEnabled;
     private readonly InputAction m_ModelViewer_ZoomDelta;
+    private readonly InputAction m_ModelViewer_RotationStart;
     public struct ModelViewerActions
     {
         private @Controls m_Wrapper;
@@ -174,6 +196,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @RotationDelta => m_Wrapper.m_ModelViewer_RotationDelta;
         public InputAction @RotationEnabled => m_Wrapper.m_ModelViewer_RotationEnabled;
         public InputAction @ZoomDelta => m_Wrapper.m_ModelViewer_ZoomDelta;
+        public InputAction @RotationStart => m_Wrapper.m_ModelViewer_RotationStart;
         public InputActionMap Get() { return m_Wrapper.m_ModelViewer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -192,6 +215,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @ZoomDelta.started -= m_Wrapper.m_ModelViewerActionsCallbackInterface.OnZoomDelta;
                 @ZoomDelta.performed -= m_Wrapper.m_ModelViewerActionsCallbackInterface.OnZoomDelta;
                 @ZoomDelta.canceled -= m_Wrapper.m_ModelViewerActionsCallbackInterface.OnZoomDelta;
+                @RotationStart.started -= m_Wrapper.m_ModelViewerActionsCallbackInterface.OnRotationStart;
+                @RotationStart.performed -= m_Wrapper.m_ModelViewerActionsCallbackInterface.OnRotationStart;
+                @RotationStart.canceled -= m_Wrapper.m_ModelViewerActionsCallbackInterface.OnRotationStart;
             }
             m_Wrapper.m_ModelViewerActionsCallbackInterface = instance;
             if (instance != null)
@@ -205,6 +231,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @ZoomDelta.started += instance.OnZoomDelta;
                 @ZoomDelta.performed += instance.OnZoomDelta;
                 @ZoomDelta.canceled += instance.OnZoomDelta;
+                @RotationStart.started += instance.OnRotationStart;
+                @RotationStart.performed += instance.OnRotationStart;
+                @RotationStart.canceled += instance.OnRotationStart;
             }
         }
     }
@@ -223,5 +252,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnRotationDelta(InputAction.CallbackContext context);
         void OnRotationEnabled(InputAction.CallbackContext context);
         void OnZoomDelta(InputAction.CallbackContext context);
+        void OnRotationStart(InputAction.CallbackContext context);
     }
 }
