@@ -7,7 +7,6 @@ public class ModelHandler : MonoBehaviour
     [SerializeField] Transform sceneCenter;
     [SerializeField] ModelPicker modelPicker;
     public Transform HandledModel => modelPicker.CurrentModel == null ? null : modelPicker.CurrentModel.transform;
-    [SerializeField] bool findObjectCenter = true;
     [SerializeField] float maxModelSize = 10f;
 
     Quaternion rotation = Quaternion.identity;
@@ -47,8 +46,9 @@ public class ModelHandler : MonoBehaviour
         HandledModel.rotation = Quaternion.identity;
         HandledModel.localScale = Vector3.one;
         FitModelToMaxSize();
+        HandledModel.position = sceneCenter.position;
         Bounds modelBounds = ModelBounds();
-        HandledModel.localPosition = sceneCenter.position - modelBounds.center;
+        HandledModel.position -= (modelBounds.center - sceneCenter.position);
 
         Vector3 axis;
         float angle;

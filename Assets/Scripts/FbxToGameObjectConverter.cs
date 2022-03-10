@@ -83,10 +83,15 @@ public static class FbxToGameObjectConverter
         {
             MeshFilter meshFilter = modelPart.AddComponent<MeshFilter>();
             MeshRenderer meshRenderer = modelPart.AddComponent<MeshRenderer>();
-            meshFilter.mesh = GetUnityMesh(fbxNode);
-            // C# version of Fbx SDK doesn't allow for reading submeshes info and multiple materials,
-            // so we are forced to use only one material for entire mesh
-            meshRenderer.material = GetUnityMaterial(fbxNode, defaultMaterial, texturesSearchDirectory);
+            try
+            {
+                meshFilter.mesh = GetUnityMesh(fbxNode);
+                // C# version of Fbx SDK doesn't allow for reading submeshes info and multiple materials,
+                // so we are forced to use only one material for entire mesh
+                meshRenderer.material = GetUnityMaterial(fbxNode, defaultMaterial, texturesSearchDirectory);
+            }
+            catch { }
+
         }
 
         return modelPart;
@@ -181,7 +186,7 @@ public static class FbxToGameObjectConverter
     {
         if (property.GetSrcObjectCount() > 0)
         {
-            FbxFileTexture fileTexture = CastTo<FbxFileTexture>(property.GetSrcObject(0), true);
+            FbxFileTexture fileTexture = CastTo<FbxFileTexture>(property.GetSrcObject(0), false);
 
             string texturePath = fileTexture.GetFileName();
             string textureFilename = Path.GetFileName(texturePath);
@@ -193,11 +198,13 @@ public static class FbxToGameObjectConverter
                 texture.LoadImage(textureData);
                 return texture;
             }
-
+            
             if (File.Exists(texturePath))
                 return TextureFromFile(texturePath);
             else
             {
+                if (!Directory.Exists(texturesSearchDirectory))
+                    Directory.CreateDirectory(texturesSearchDirectory);
                 var pngFiles = Directory.GetFiles(texturesSearchDirectory, "*.png", SearchOption.AllDirectories);
                 var jpgFiles = Directory.GetFiles(texturesSearchDirectory, "*.jpg", SearchOption.AllDirectories);
                 var files = pngFiles.Concat(jpgFiles).ToArray();
